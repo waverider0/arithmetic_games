@@ -5,10 +5,10 @@ import readline
 import threading
 
 OPS = ['+', '-', '*', '/', '^']
-ADD_L = [2, 500]
-ADD_R = [2, 500]
-MUL_L = [2, 20]
-MUL_R = [2, 100]
+ADD_L = [2,200]
+ADD_R = [2,200]
+MUL_L = [2,20]
+MUL_R = [2,100]
 POW_L = [2,10]
 POW_R = [2,5]
 DURATION_SECONDS = 120
