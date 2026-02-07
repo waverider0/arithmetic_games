@@ -10,7 +10,7 @@ ADD_R = [2,200]
 MUL_L = [2,20]
 MUL_R = [2,100]
 POW_L = [2,10]
-POW_R = [2,5]
+POW_R = [2,10]
 DURATION_SECONDS = 120
 
 if __name__ == '__main__':
