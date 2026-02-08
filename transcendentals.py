@@ -8,6 +8,10 @@ import threading
 def rel_error(ans, exact):
   return abs(ans - exact) / (abs(exact) or 1)
 
+def make_sqrt():
+  x = random.randint(0, 1000)
+  return f'sqrt({x}) = ', math.sqrt(x)
+
 def make_exp():
   x = random.uniform(-5, 5)
   return f'e^{x:.2f} = ', math.exp(x)
@@ -46,15 +50,16 @@ def make_atan():
   return f'atan({x}) = ', math.degrees(math.atan(x))
 
 FUNCTIONS = {
-  'exp'   : make_exp,
-  'ln'    : make_ln,
-  'log'   : make_log,
-  'sin'   : make_sin,
-  'cos'   : make_cos,
-  'tan'   : make_tan,
-  #'asin'  : make_asin,
-  #'acos'  : make_acos,
-  #'atan'  : make_atan,
+  'sqrt': make_sqrt,
+  'exp' : make_exp,
+  'ln'  : make_ln,
+  'log' : make_log,
+  'sin' : make_sin,
+  'cos' : make_cos,
+  'tan' : make_tan,
+  #'asin': make_asin,
+  #'acos': make_acos,
+  #'atan': make_atan,
 }
 DURATION_SECONDS = 120
 
