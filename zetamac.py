@@ -4,7 +4,7 @@ import random
 import readline
 import threading
 
-OPS = ['+', '-', '*', '/', '^']
+OPS = ['+', '-', '*', '/', '^', '%']
 ADD_L = [2,200]
 ADD_R = [2,200]
 MUL_L = [2,20]
@@ -40,10 +40,16 @@ if __name__ == '__main__':
       exact = a / b
       parse = float
       check = lambda x: abs((x - exact) / exact) <= 0.01
-    else:
+    elif op == '^':
       a = random.randint(*POW_L)
       b = random.randint(*POW_R)
       exact = a ** b
+      parse = int
+      check = lambda x: x == exact
+    else:
+      a = random.randint(MUL_L[0]*MUL_R[0], MUL_L[1]*MUL_R[1])
+      b = random.randint(*MUL_R)
+      exact = a % b
       parse = int
       check = lambda x: x == exact
 
