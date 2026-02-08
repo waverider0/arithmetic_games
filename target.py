@@ -6,9 +6,8 @@ import random
 import readline
 
 OPS = ['Add', 'Sub', 'Mult', 'Div']
-TARGET_MIN = 10
-TARGET_MAX = 300
-LIST_SIZE = 5
+TARGET_RANGE = [10,300]
+LIST_SIZE = 4
 
 def generate_random_expression(leaves):
   if len(leaves) == 1: return ast.Constant(value=leaves[0])
@@ -57,7 +56,7 @@ if __name__ == '__main__':
       target_expression = ast.unparse(target_tree)
       try: target = eval(compile(target_expression, '<ast>', 'eval')) # FIXME: program stalls if target_expression evals to a huge number
       except ZeroDivisionError: continue
-      if target.is_integer() and TARGET_MIN <= target <= TARGET_MAX: break
+      if target.is_integer() and TARGET_RANGE[0] <= target <= TARGET_RANGE[1]: break
   print(numbers)
   print(f'Target: {int(target)}') # explicit cast to int to remove the trailing '.0'
 
