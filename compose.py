@@ -5,7 +5,7 @@ from collections import defaultdict
 import random
 import readline
 
-OPS = ['Add', 'Sub', 'Mult', 'Div']
+OPS = ['Add', 'Sub', 'Mult', 'Div'] # TODO: add Pow and Mod
 TARGET_RANGE = [10,300]
 LIST_SIZE = 4
 
