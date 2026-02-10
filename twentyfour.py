@@ -12,9 +12,7 @@ class Timeout:
   def __exit__(self, *a): signal.setitimer(signal.ITIMER_REAL, 0)
   def h(self, *a): raise TimeoutError('TLE')
 
-def catalan(n):
-  if n < 0: return 0
-  return math.comb(2*n, n) // (n+1)
+def catalan(n:int): return math.comb(2*n, n) // (n+1)
 
 def generate_expression(nums:list[int], required_ops:list[str]) -> str:
   if len(nums) == 1: return str(nums[0])
