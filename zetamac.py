@@ -4,13 +4,14 @@ import random
 import readline
 import threading
 
-OPS = ['+', '-', '*', '/', '^', '%']
-ADD_L = [2,200]
-ADD_R = [2,200]
-MUL_L = [2,20]
-MUL_R = [2,100]
-POW_L = [2,10]
-POW_R = [2,10]
+# TODO: instead of always generating balanced depth 2 binary trees,
+# we generate variable depth arbitrarily balanced.
+MAX_DEPTH = 4
+
+OPS = ['+', '-', '*', '/', '%', '^']
+ADD_L, ADD_R = [2,200], [2,200]
+MUL_L, MUL_R = [2,20], [2,100]
+POW_L, POW_R = [2,10], [2,10]
 DURATION_SECONDS = 120
 
 if __name__ == '__main__':
@@ -40,16 +41,16 @@ if __name__ == '__main__':
       exact = a / b
       parse = float
       check = lambda x: abs((x - exact) / exact) <= 0.01
-    elif op == '^':
-      a = random.randint(*POW_L)
-      b = random.randint(*POW_R)
-      exact = a ** b
-      parse = int
-      check = lambda x: x == exact
-    else:
+    elif op == '%':
       a = random.randint(MUL_L[0]*MUL_R[0], MUL_L[1]*MUL_R[1])
       b = random.randint(*MUL_R)
       exact = a % b
+      parse = int
+      check = lambda x: x == exact
+    else:
+      a = random.randint(*POW_L)
+      b = random.randint(*POW_R)
+      exact = a ** b
       parse = int
       check = lambda x: x == exact
 
