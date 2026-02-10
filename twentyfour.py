@@ -1,11 +1,6 @@
 #!/usr/bin/env python3
-import math
-import random
-import re
-import readline
-import signal
+import ast, math, random, re, readline, signal, sys
 from sympy import parse_expr
-import sys
 
 OPS = ['+', '-', '*', '/', '%', '**']
 TARGET_RANGE = [10,200]
@@ -13,8 +8,8 @@ NUMBER_RANGE = [2,20]
 NUMBER_COUNT = 4
 
 class Timeout:
-  def __enter__(self, *a): signal.signal(signal.SIGALRM, self.h); signal.alarm(1)
-  def __exit__(self, *a): signal.alarm(0) 
+  def __enter__(self, *a): signal.signal(signal.SIGALRM, self.h); signal.setitimer(signal.ITIMER_REAL, 0.2)
+  def __exit__(self, *a): signal.setitimer(signal.ITIMER_REAL, 0)
   def h(self, *a): raise TimeoutError('TLE')
 
 def catalan(n):
@@ -54,7 +49,7 @@ if __name__ == '__main__':
     print(f'Target: {target}')
     while True:
       user_input = input('Expression: ')
-      if user_input == 'q': print(f'Solution: {solution}'); sys.exit()
+      if user_input == 'q': print(f'Solution: {ast.unparse(ast.parse(solution))}'); sys.exit() # parse then unparse to remove redundant parentheses
       try:
         user_numbers = sorted([int(s) for s in re.split(r'\D+', user_input) if s])
         if user_numbers != numbers: print(f'Wrong numbers. Used {user_numbers}, needed {numbers}'); continue
