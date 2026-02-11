@@ -20,7 +20,7 @@ opacity = (F node count - target node count) / F node count
  0: no simplification
  1: fully simplified
 
-1) generate F and b where F(b)-F(0)=target and opacity(target) >= MIN_OPACITY
+1) pick a nice b then generate an F where F(b)-F(0)=y and opacity(y) >= MIN_OPACITY
 2) simplify F, then F'=f
 3) simplify f, then extract the primitives
 4) parse and evaluate the player's input

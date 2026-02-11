@@ -1,7 +1,7 @@
 [project]
 name = "arithmetic_games"
 version = "0.0.0"
-dependencies = [ "sympy" ]
+dependencies = [ "matplotlib", "sympy" ]
 
 [tool.setuptools]
 packages = []
