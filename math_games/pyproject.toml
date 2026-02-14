@@ -1,0 +1,7 @@
+[project]
+name = "math_games"
+version = "0.0.0"
+dependencies = [ "matplotlib", "sympy" ]
+
+[tool.setuptools]
+packages = []
